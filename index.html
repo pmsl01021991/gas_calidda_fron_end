@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulador de Llamadas - Gas Cálidda (Simulación)</title>
+  <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer ></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Simulador de Llamadas - Gas Cálidda</h1>
+      <p class="sub">Modo: SIMULACIÓN TOTAL — prueba de atención al cliente</p>
+    </header>
+
+    <main>
+      <section class="controls">
+        <label>Escenario:
+          <select id="escenarioSelect">
+            <option value="bajaPresion">Baja presión</option>
+            <option value="fuga">Fuga de gas</option>
+            <option value="facturacion">Facturación alta</option>
+            <option value="reconexion">Solicitud de reconexión</option>
+            <option value="instalacion">Instalación demorada</option>
+            <option value="emergencia">Emergencia - olor fuerte</option>
+          </select>
+        </label>
+
+        <label>Teléfono simulado:
+          <input id="simNumber" placeholder="Ej: 987654321" />
+        </label>
+
+        <div class="buttons-row">
+          <button id="btnStartCall">📞 Iniciar llamada (entrante)</button>
+          <button id="btnPlayRing">🔔 Probar ringtone</button>
+          <button id="btnStopRing" class="secondary">⏹ Detener ringtone</button>
+        </div>
+      </section>
+
+      <section id="callUI" class="call-ui hidden">
+        <div class="incoming">
+          <div class="caller-info">
+            <div class="caller-number" id="callerNumber">--</div>
+            <div class="caller-scenario" id="callerScenario">--</div>
+          </div>
+          <div class="call-actions">
+            <button id="btnAccept" class="accept">Aceptar</button>
+            <button id="btnReject" class="reject">Rechazar</button>
+          </div>
+        </div>
+
+        <div id="inCall" class="in-call hidden">
+          <div class="status">En llamada — <span id="callTimer">00:00</span></div>
+
+          <div class="transcripts">
+            <div class="panel">
+              <h3>Transcripción cliente</h3>
+              <div id="clienteText" class="bubble"></div>
+            </div>
+            <div class="panel">
+              <h3>Transcripción agente (tú)</h3>
+              <div id="agenteText" class="bubble"></div>
+            </div>
+          </div>
+
+          <div class="controls-incall">
+            <button id="btnListen">🎙 Escuchar y responder (manual)</button>
+            <button id="btnAutoListen">🔁 Modo automático</button>
+            <button id="btnHangup" class="reject">Colgar</button>
+          </div>
+
+          <div class="log">
+            <h3>Registro / Log</h3>
+            <div id="logBox"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="options">
+        <h3>Opciones del simulador</h3>
+        <label><input type="checkbox" id="chkAutoAccept"> Auto-aceptar llamadas (para pruebas)</label>
+        <label><input type="checkbox" id="chkEmotion"> Cliente con emoción (irritable)</label>
+      </section>
+    </main>
+
+    <footer>
+      <small>Funciona con Web Speech API (reconocimiento y síntesis). Mejor en Chrome/Edge. No realiza llamadas reales.</small>
+    </footer>
+  </div>
+
+
+</body>
+</html>
